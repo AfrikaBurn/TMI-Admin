@@ -1,27 +1,38 @@
-# Admin
+# TMI Administration
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+Administration is the first of the client applications and is meant to be a low
+level administration of the people elements. It has begun to be implemented
+using [Angular](https://angular.io/).
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+* [Angular](https://angular.io) for the Admin client application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Installing Administration
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Download and install [Angular](https://angular.io/).
+1. Within a terminal, inside the downloaded TMI directory:
 
-## Running unit tests
+```
+cd apps/admin
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Running Administration
 
-## Running end-to-end tests
+1. [Run TMI People](#Running).
+1. Within another terminal, inside the downloaded TMI directory:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+cd apps/admin
+npm start
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+With a browser visit: http://localhost:4200/
+You may login with the dummy account:
+```
+Username: Administrator
+Password: Administrator
+```
