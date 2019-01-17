@@ -1,0 +1,53 @@
+<article class="user-list-item">
+
+  <header>
+    <h1><img alt="No Avatar">{{user.username}}</h1>
+    <a href="mailto:{{user.email}}">{{user.email}}</a>
+  </header>
+
+  <main></main>
+
+  <footer>
+    <nav>
+
+      <a
+        href={{if user.canPause "#"}}
+        class="pause{{if user.isPaused " paused"}}{{if user.canPause " enabled"}}"
+        {{action "pause" user}}
+      >
+        {{if user.isPaused "Unpause" "Pause"}}
+      </a>
+
+      <a
+        href={{if user.canLock "#"}}
+        class="lock{{if user.isLocked " locked"}}{{if user.canLock " enabled"}}"
+        {{action "lock" user}}
+      >
+        {{if user.isLocked "Unlock" "Lock"}}
+      </a>
+
+      <a
+        href={{if user.canReset "#"}}
+        class="reset{{if user.canReset " enabled"}}"
+      >
+        Reset
+      </a>
+
+      <a
+        href={{if user.canDelete "#"}}
+        class="delete{{if user.isDelete " deleted"}}{{if user.canDelete " enabled"}}"
+      >
+        Delete
+      </a>
+
+      <a
+        href={{if user.canMore "#"}}
+        class="more"
+      >
+        More
+      </a>
+
+    </nav>
+  </footer>
+
+</article>

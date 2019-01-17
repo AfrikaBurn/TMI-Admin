@@ -1,0 +1,31 @@
+<form class="login-form" {{action "login" on="submit"}}>
+
+  <header>
+    <h1>Login</h1>
+  </header>
+
+  <main>
+    <label for="username">
+      <span>Username</span>
+      {{input class="login-username" type="text" value=username }}
+    </label>
+    <label for="password">
+      <span>Password</span>
+      {{input class="login-password" type="password" value=password }}
+    </label>
+    {{#if loginFailed}}
+      <div class="alert">Invalid credentials.</div>
+    {{/if}}
+  </main>
+
+  <footer>
+    <button type="reset" class="login-clear" {{action "reset"}}>Clear</button>
+    <button type="submit" class="login-submit" disabled={{isProcessing}}>Login</button>
+    {{#if isSlowConnection}}
+      <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+    {{/if}}
+  </footer>
+
+</form>
+
+{{outlet}}
