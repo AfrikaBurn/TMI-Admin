@@ -22,11 +22,15 @@ export default Base.extend({
    * @inheritdoc
    */
   authenticate(credentials) {
+
+    console.log('CRED: ', credentials)
+
     return new Promise((resolve, reject) => {
       $.post(
         {
           url: "http://127.0.0.1:3000/users/login",
-          data: credentials,
+          data: JSON.stringify(credentials),
+          contentType: 'application/json',
           xhrFields: { withCredentials: true}
         }
       )
