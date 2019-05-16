@@ -13,20 +13,27 @@ export default Base.extend({
    * @inheritdoc
    */
   restore() {
-    return new Promise((resolve) => {
-      resolve()
-    })
+    return new Promise(
+      (resolve, reject) => $.get(
+        {
+          url: "http://127.0.0.1:3000/users/login",
+          contentType: 'application/json',
+          xhrFields: { withCredentials: true}
+        }
+      )
+      .then(
+        (data) => resolve(),
+        (errors) => reject(errors)
+      )
+    )
   },
 
   /**
    * @inheritdoc
    */
   authenticate(credentials) {
-
-    console.log('CRED: ', credentials)
-
-    return new Promise((resolve, reject) => {
-      $.post(
+    return new Promise(
+      (resolve, reject) => $.post(
         {
           url: "http://127.0.0.1:3000/users/login",
           data: JSON.stringify(credentials),
@@ -34,22 +41,27 @@ export default Base.extend({
           xhrFields: { withCredentials: true}
         }
       )
-      .then((data) => { resolve(data)}, (errors) => reject(errors))
-    })
+      .then(
+        (data) => resolve(data),
+        (errors) => reject(errors)
+      )
+    )
   },
 
   /**
    * @inheritdoc
    */
   invalidate() {
-    return new Promise((resolve, reject) => {
-      $.get(
+    return new Promise(
+      (resolve, reject) => $.get(
         {
           url: "http://127.0.0.1:3000/users/logout",
           xhrFields: { withCredentials: true}
         }
+      ).then(
+        (data) => resolve(data),
+        (errors) => reject(errors)
       )
-      .then((data) => { resolve(data)}, (errors) => reject(errors))
-    })
+    )
   }
 })

@@ -1,1 +1,3 @@
-{{outlet}}
+{{#each model as |agreement|}}
+  {{agreement-list-item agreement=agreement}}
+{{/each}}

@@ -1,0 +1,52 @@
+<article class="group-list-item">
+
+  <header>
+    <h1><img>{{group.name}}</h1>
+  </header>
+
+  <main></main>
+
+  <footer>
+    <nav>
+
+      <a
+        href={{if group.canPause "#"}}
+        class="pause{{if group.isPaused " paused"}}{{if group.canPause " enabled"}}"
+        {{action "pause" group}}
+      >
+        {{if group.isPaused "Unpause" "Pause"}}
+      </a>
+
+      <a
+        href={{if group.canLock "#"}}
+        class="lock{{if group.isLocked " locked"}}{{if group.canLock " enabled"}}"
+        {{action "lock" group}}
+      >
+        {{if group.isLocked "Unlock" "Lock"}}
+      </a>
+
+      <a
+        href={{if group.canReset "#"}}
+        class="reset{{if group.canReset " enabled"}}"
+      >
+        Reset
+      </a>
+
+      <a
+        href={{if group.canDelete "#"}}
+        class="delete{{if group.isDelete " deleted"}}{{if group.canDelete " enabled"}}"
+      >
+        Delete
+      </a>
+
+      <a
+        href={{if group.canMore "#"}}
+        class="more"
+      >
+        More
+      </a>
+
+    </nav>
+  </footer>
+
+</article>
