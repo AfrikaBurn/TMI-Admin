@@ -1,0 +1,7 @@
+{{input
+  value=this.value
+  key-up=(action "search")
+  class="light"
+  placeholder=(concat "Search " this.typeName)
+}}
+{{yield this.results}}

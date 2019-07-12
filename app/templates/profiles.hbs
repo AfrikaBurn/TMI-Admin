@@ -1,3 +1,8 @@
-{{#each model as |profile|}}
-  {{profile-list-item profile=profile}}
-{{/each}}
+<SearchList
+  @typeName="profile types"
+  @search={{action "search"}} as |results|
+>
+  {{#each results as |profile|}}
+    {{profile-list-item profile=profile}}
+  {{/each}}
+</SearchList>

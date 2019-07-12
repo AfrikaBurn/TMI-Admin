@@ -12,26 +12,39 @@ export default Controller.extend({
   timeout: null,
 
   actions:{
-    login: function() { this.login() },
-    reset: function(){ this.reset() }
-  },
 
-  /**
-   * Submits authentication details, attaches handlers
-   */
-  login: function(){
+    /**
+     * Submits authentication details, attaches handlers
+     */
+    login: function(){
 
-    var credentials = this.getProperties("username", "password");
+      var credentials = this.getProperties("username", "password");
 
-    this.set("timeout", setTimeout(this.slowConnection.bind(this), 5000));
-    this.setProperties({
-      loginFailed: false,
-      isProcessing: true
-    });
+      this.set("timeout", setTimeout(this.slowConnection.bind(this), 5000));
+      this.setProperties({
+        loginFailed: false,
+        isProcessing: true
+      });
 
-    this.get('session').authenticate('authenticator:openid', credentials)
-      .then((data) => { this.success(data)})
-      .catch((reason) => { this.failure(reason.error || reason)})
+      this.get('session').authenticate('authenticator:openid', credentials)
+        .then((data) => { this.success(data)})
+        .catch((reason) => { this.failure(reason.error || reason)})
+    },
+
+    /**
+     * Reset the form
+     */
+    reset: function() {
+
+      clearTimeout(this.get("timeout"));
+
+      this.setProperties({
+        isProcessing: false,
+        isSlowConnection: false,
+        username: '',
+        password: ''
+      });
+    }
   },
 
   /**
@@ -54,20 +67,5 @@ export default Controller.extend({
    */
   slowConnection: function() {
     this.set("isSlowConnection", true);
-  },
-
-  /**
-   * Reset the form
-   */
-  reset: function() {
-
-    clearTimeout(this.get("timeout"));
-
-    this.setProperties({
-      isProcessing: false,
-      isSlowConnection: false,
-      username: '',
-      password: ''
-    });
   }
 });

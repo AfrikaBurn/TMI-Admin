@@ -22,7 +22,7 @@ export default Base.extend({
         }
       )
       .then(
-        (data) => resolve(),
+        (data) => resolve(data),
         (errors) => reject(errors)
       )
     )

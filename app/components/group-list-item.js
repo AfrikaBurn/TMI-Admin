@@ -2,8 +2,8 @@ import Component from '@ember/component';
 
 export default Component.extend({
   actions: {
-    pause(group){},
-    lock(group){},
+    pause(group){ group; },
+    lock(group){ group; },
     reset(){},
     delete(){},
     more(){}

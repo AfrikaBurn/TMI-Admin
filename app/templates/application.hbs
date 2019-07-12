@@ -2,10 +2,20 @@
 
   <header>
     <a href="/"><img alt="Current User"></a>
-    <nav>
+
+    <nav class="primary">
       <a href="/">Administration</a>
       <a href="#" {{action "invalidateSession"}}>Logout</a>
     </nav>
+
+    <nav class="secondary">
+      {{#link-to "users" class="button"}}Users{{/link-to}}
+      {{#link-to "groups" class="button"}}Groups{{/link-to}}
+      {{#link-to "posts" class="button"}}Posts{{/link-to}}
+      {{#link-to "profiles" class="button"}}Profiles{{/link-to}}
+      {{#link-to "agreements" class="button"}}Agreements{{/link-to}}
+    </nav>
+
   </header>
 
 {{/liquid-if}}
@@ -14,16 +24,6 @@
     {{liquid-outlet}}
   </main>
 
-{{#liquid-if session.isAuthenticated }}
-
   <footer>
-    <nav>
-      {{#link-to "users" class="button"}}Users{{/link-to}}
-      {{#link-to "groups" class="button"}}Groups{{/link-to}}
-      {{#link-to "posts" class="button"}}Posts{{/link-to}}
-      {{#link-to "profiles" class="button"}}Profiles{{/link-to}}
-      {{#link-to "agreements" class="button"}}Agreements{{/link-to}}
-    </nav>
+    <nav class="pager"></nav>
   </footer>
-
-{{/liquid-if}}

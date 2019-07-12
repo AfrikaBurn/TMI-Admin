@@ -1,3 +1,8 @@
-{{#each model as |post|}}
-  {{post-list-item post=post}}
-{{/each}}
+<SearchList
+  @typeName="post types"
+  @search={{action "search"}} as |results|
+>
+  {{#each results as |post|}}
+    {{post-list-item post=post}}
+  {{/each}}
+</SearchList>

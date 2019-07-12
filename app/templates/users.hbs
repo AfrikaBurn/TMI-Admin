@@ -1,3 +1,9 @@
-{{#each model as |user|}}
-  {{user-list-item user=user}}
-{{/each}}
+<SearchList
+  @typeName="users"
+  @search={{action "search"}} as |results|
+>
+  {{#each results as |user|}}
+    {{user-list-item user=user}}
+  {{/each}}
+</SearchList>
+{{outlet}}

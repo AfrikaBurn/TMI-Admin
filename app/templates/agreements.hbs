@@ -1,3 +1,8 @@
-{{#each model as |agreement|}}
-  {{agreement-list-item agreement=agreement}}
-{{/each}}
+<SearchList
+  @typeName="agreement types"
+  @search={{action "search"}} as |results|
+>
+  {{#each results as |agreement|}}
+    {{agreement-list-item agreement=agreement}}
+  {{/each}}
+</SearchList>

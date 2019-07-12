@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import {computed} from '@ember/object';
 
 export default DS.Model.extend({
 
@@ -7,25 +8,25 @@ export default DS.Model.extend({
   password: DS.attr(),
   status: DS.attr(),
 
-  isPaused: function() {
+  isPaused: computed('status', function() {
     return this.get('status') == "suspended"
-  }.property('status'),
-  canPause: function() {
+  }),
+  canPause: computed('status', function() {
     return this.get('status') != "locked"
-  }.property('status'),
-  isLocked: function() {
+  }),
+  isLocked: computed('status', function() {
     return this.get('status') == "locked"
-  }.property('status'),
-  canLock: function() {
-    return this.get('status') == "suspended" || this.get('status') == "locked"
-  }.property('status'),
-  canReset: function() {
-    return this.get('status') == "active" || this.get('status') == "suspended"
-  }.property('status'),
-  canDelete: function() {
-    return this.get('status') == "locked"
-  }.property('status'),
-  canMore: function() {
+  }),
+  canLock: computed('status', function() {
+    return ["active", "locked", "suspended"].indexOf(this.get('status')) > -1
+  }),
+  canReset: computed('status', function() {
+    return ["active", "suspended"].indexOf(this.get('status')) > -1
+  }),
+  canDelete: computed('status', function() {
+    return this.get('status') == "suspended"
+  }),
+  canMore: computed('status', function() {
     return true
-  }.property('status')
+  })
 });
